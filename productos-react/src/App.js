@@ -54,18 +54,18 @@ function App() {
 
   
   const buscarPorNombre = () => {
-    const productos = productos.filter((producto) =>
+    const productosFiltradosPorNombre = productos.filter((producto) =>
       producto.nombre.toLowerCase().includes(nombreBusqueda.toLowerCase())
     );
-    setProductos(productos); 
+    setProductos(productosFiltradosPorNombre); 
   };
 
 
   const buscarPorId = () => {
-    const productos = productos.filter((producto) =>
+    const productosFiltradosPorId = productos.filter((producto) =>
       producto.id.toString().includes(idBusqueda)
     );
-    setProductos(productos); 
+    setProductos(productosFiltradosPorId); 
   };
 
   return (
