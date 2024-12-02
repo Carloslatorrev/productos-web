@@ -16,7 +16,6 @@ const ProductoForm = ({ setProductosFiltrados, setProductos }) => {
     const updatedProductos = await productoApi.obtenerProductos();
     setProductos(updatedProductos);
     setProductosFiltrados(updatedProductos);
-    productos
     setFormData({ nombre: "", descripcion: "", precio: "", categoria: "" });
   };
 
