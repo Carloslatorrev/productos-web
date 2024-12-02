@@ -21,6 +21,12 @@ const ProductoList = ({ productos, setProductosFiltrados, setProductos }) => {
         producto.id === id ? { ...producto, [name]: value } : producto
       )
     );
+
+    setProductosFiltrados((prevProductos) =>
+      prevProductos.map((producto) =>
+        producto.id === id ? { ...producto, [name]: value } : producto
+      )
+    );
   };
 
   return (
