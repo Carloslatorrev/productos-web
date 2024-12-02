@@ -1,4 +1,3 @@
-
 FROM node:18-alpine AS build
 
 WORKDIR /app
@@ -7,17 +6,18 @@ COPY productos-react/package.json productos-react/package-lock.json /app/
 
 RUN npm install
 
-COPY productos-react /app/productos-react
-
-WORKDIR /app/productos-react
+COPY productos-react /app/
 
 RUN npm run build
 
-FROM nginx:alpine
+FROM node:18-alpine
 
-COPY --from=build /app/productos-react/build /usr/share/nginx/html/productos-react
+RUN npm install -g serve
 
-EXPOSE 80
+COPY --from=build /app/build /usr/share/nginx/html
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 5000
+
+CMD ["serve", "-s", "/usr/share/nginx/html", "-l", "5000"]
+
 
