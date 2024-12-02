@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import productoApi from "../../services/producto-api";
 
-const ProductoForm = ({ setProductosFiltrados, setProductos }) => {
+const ProductoForm = ({ setProductos }) => {
   const [formData, setFormData] = useState({
     nombre: "",
     descripcion: "",
@@ -15,7 +15,6 @@ const ProductoForm = ({ setProductosFiltrados, setProductos }) => {
     await productoApi.crearProducto(formData);
     const updatedProductos = await productoApi.obtenerProductos();
     setProductos(updatedProductos);
-    setProductosFiltrados(updatedProductos);
     setFormData({ nombre: "", descripcion: "", precio: "", categoria: "" });
   };
 

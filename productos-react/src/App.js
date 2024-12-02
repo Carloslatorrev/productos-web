@@ -11,8 +11,7 @@ function App() {
   const [estadisticas, setEstadisticas] = useState([]); 
   const [activeTab, setActiveTab] = useState('productos'); 
   const [nombreBusqueda, setNombreBusqueda] = useState('');
-  const [idBusqueda, setIdBusqueda] = useState('');
-  const [productosFiltrados, setProductosFiltrados] = useState([]); 
+  const [idBusqueda, setIdBusqueda] = useState(''); 
 
  
   useEffect(() => {
@@ -56,18 +55,18 @@ function App() {
 
   
   const buscarPorNombre = () => {
-    const productosFiltrados = productos.filter((producto) =>
+    const productos = productos.filter((producto) =>
       producto.nombre.toLowerCase().includes(nombreBusqueda.toLowerCase())
     );
-    setProductosFiltrados(productosFiltrados); 
+    setProductos(productos); 
   };
 
 
   const buscarPorId = () => {
-    const productosFiltrados = productos.filter((producto) =>
+    const productos = productos.filter((producto) =>
       producto.id.toString().includes(idBusqueda)
     );
-    setProductosFiltrados(productosFiltrados); 
+    setProductos(productos); 
   };
 
   return (
@@ -107,9 +106,9 @@ function App() {
         {activeTab === 'productos' && (
           <div>
             <h2>Crear Producto</h2>
-            <ProductoForm setProductosFiltrados={setProductosFiltrados} setProductos={setProductos}  />
+            <ProductoForm setProductos={setProductos}  />
             <h2>Lista de Productos</h2>
-            <ProductoList productos={productosFiltrados} setProductosFiltrados={setProductosFiltrados} setProductos={setProductos} />
+            <ProductoList productos={productos}  setProductos={setProductos} />
           </div>
         )}
 

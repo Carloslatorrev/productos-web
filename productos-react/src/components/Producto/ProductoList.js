@@ -5,24 +5,16 @@ const ProductoList = ({ productos, setProductosFiltrados, setProductos }) => {
   const handleEliminar = async (id) => {
     await productoApi.eliminarProducto(id);
     setProductos(productos.filter((producto) => producto.id !== id));
-    setProductosFiltrados(productos.filter((producto) => producto.id !== id));
   };
 
   const handleActualizar = async (producto) => {
     await productoApi.actualizarProducto(producto.id, producto);
     setProductos(await productoApi.obtenerProductos());
-    setProductosFiltrados(await productoApi.obtenerProductos()); 
   };
 
   const handleChange = (e, id) => {
     const { name, value } = e.target;
     setProductos((prevProductos) =>
-      prevProductos.map((producto) =>
-        producto.id === id ? { ...producto, [name]: value } : producto
-      )
-    );
-
-    setProductosFiltrados((prevProductos) =>
       prevProductos.map((producto) =>
         producto.id === id ? { ...producto, [name]: value } : producto
       )
