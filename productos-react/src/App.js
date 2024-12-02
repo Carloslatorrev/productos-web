@@ -54,9 +54,9 @@ function App() {
   };
 
   
-  const buscarPorNombre = () => {
+  const buscarPorNombre = async () => {
     if (nombreBusqueda.trim() === "") {
-      const data = productoApi.obtenerProductos(); 
+      const data = await productoApi.obtenerProductos(); 
       setProductos(data); 
     } else {
       const productosFiltradosPorNombre = productos.filter((producto) =>
@@ -66,9 +66,9 @@ function App() {
     }
   };
   
-  const buscarPorId = () => {
+  const buscarPorId = async () => {
     if (idBusqueda.trim() === "") {
-      const data = productoApi.obtenerProductos(); 
+      const data = await productoApi.obtenerProductos(); 
       setProductos(data); 
     } else {
       const productosFiltradosPorId = productos.filter((producto) =>
