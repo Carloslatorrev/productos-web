@@ -107,7 +107,7 @@ function App() {
         {activeTab === 'productos' && (
           <div>
             <h2>Crear Producto</h2>
-            <ProductoForm setProductos={setProductos} />
+            <ProductoForm setProductosFiltrados={setProductosFiltrados} setProductos={setProductos}  />
             <h2>Lista de Productos</h2>
             <ProductoList productos={productosFiltrados} setProductos={setProductos} />
           </div>
