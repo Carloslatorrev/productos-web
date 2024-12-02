@@ -11,7 +11,8 @@ function App() {
   const [estadisticas, setEstadisticas] = useState([]); 
   const [activeTab, setActiveTab] = useState('productos'); 
   const [nombreBusqueda, setNombreBusqueda] = useState('');
-  const [idBusqueda, setIdBusqueda] = useState(''); 
+  const [idBusqueda, setIdBusqueda] = useState('');
+  
 
  
   useEffect(() => {
@@ -55,7 +56,8 @@ function App() {
   
   const buscarPorNombre = () => {
     if (nombreBusqueda.trim() === "") {
-      setProductos(productos); 
+      const data = productoApi.obtenerProductos(); 
+      setProductos(data); 
     } else {
       const productosFiltradosPorNombre = productos.filter((producto) =>
         producto.nombre.toLowerCase().includes(nombreBusqueda.toLowerCase())
@@ -66,7 +68,8 @@ function App() {
   
   const buscarPorId = () => {
     if (idBusqueda.trim() === "") {
-      setProductos(productos); 
+      const data = productoApi.obtenerProductos(); 
+      setProductos(data); 
     } else {
       const productosFiltradosPorId = productos.filter((producto) =>
         producto.id.toString().includes(idBusqueda)
