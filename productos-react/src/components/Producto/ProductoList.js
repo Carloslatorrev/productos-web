@@ -1,15 +1,17 @@
 import React from "react";
 import productoApi from "../../services/producto-api";
 
-const ProductoList = ({ productos, setProductos }) => {
+const ProductoList = ({ productos, setProductosFiltrados, setProductos }) => {
   const handleEliminar = async (id) => {
     await productoApi.eliminarProducto(id);
     setProductos(productos.filter((producto) => producto.id !== id));
+    setProductosFiltrados(productos.filter((producto) => producto.id !== id));
   };
 
   const handleActualizar = async (producto) => {
     await productoApi.actualizarProducto(producto.id, producto);
-    setProductos(await productoApi.obtenerProductos()); 
+    setProductos(await productoApi.obtenerProductos());
+    setProductosFiltrados(await productoApi.obtenerProductos()); 
   };
 
   const handleChange = (e, id) => {

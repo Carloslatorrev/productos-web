@@ -109,7 +109,7 @@ function App() {
             <h2>Crear Producto</h2>
             <ProductoForm setProductosFiltrados={setProductosFiltrados} setProductos={setProductos}  />
             <h2>Lista de Productos</h2>
-            <ProductoList productos={productosFiltrados} setProductos={setProductos} />
+            <ProductoList productos={productosFiltrados} setProductosFiltrados={setProductosFiltrados} setProductos={setProductos} />
           </div>
         )}
 
