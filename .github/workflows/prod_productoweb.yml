@@ -6,7 +6,7 @@ name: Build and deploy container app to Azure Web App - productoweb
 on:
   push:
     branches:
-      - main
+      - prod
   workflow_dispatch:
 
 jobs:
@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_ebf2e3b5646c4459acb2ebd8ac5caa2f }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_56ce81a6db2e43e69a713bc0b81c1c07 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_9456d5ade2b040dbb8b8b651d2b62f15 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_d172958ca9f747fe8a229c6037aefa2e }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_ebf2e3b5646c4459acb2ebd8ac5caa2f }}/productoweb:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_9456d5ade2b040dbb8b8b651d2b62f15 }}/carloslatorre/productoweb:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'productoweb'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_9c2de717193748a2a1d7d3273d660e9e }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_ebf2e3b5646c4459acb2ebd8ac5caa2f }}/productoweb:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_595803e5895e4071bcc726f1c236b246 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_9456d5ade2b040dbb8b8b651d2b62f15 }}/carloslatorre/productoweb:${{ github.sha }}'
