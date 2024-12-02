@@ -54,19 +54,27 @@ function App() {
 
   
   const buscarPorNombre = () => {
-    const productosFiltradosPorNombre = productos.filter((producto) =>
-      producto.nombre.toLowerCase().includes(nombreBusqueda.toLowerCase())
-    );
-    setProductos(productosFiltradosPorNombre); 
+    if (nombreBusqueda.trim() === "") {
+      setProductos(productos); 
+    } else {
+      const productosFiltradosPorNombre = productos.filter((producto) =>
+        producto.nombre.toLowerCase().includes(nombreBusqueda.toLowerCase())
+      );
+      setProductos(productosFiltradosPorNombre); 
+    }
   };
-
-
+  
   const buscarPorId = () => {
-    const productosFiltradosPorId = productos.filter((producto) =>
-      producto.id.toString().includes(idBusqueda)
-    );
-    setProductos(productosFiltradosPorId); 
+    if (idBusqueda.trim() === "") {
+      setProductos(productos); 
+    } else {
+      const productosFiltradosPorId = productos.filter((producto) =>
+        producto.id.toString().includes(idBusqueda)
+      );
+      setProductos(productosFiltradosPorId); 
+    }
   };
+  
 
   return (
     <div className="App">
