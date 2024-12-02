@@ -19,7 +19,6 @@ function App() {
       try {
         const data = await productoApi.obtenerProductos(); 
         setProductos(data);
-        setProductosFiltrados(data); 
       } catch (error) {
         console.error('Error al obtener productos:', error);
       }
